@@ -4,12 +4,12 @@
 
 ## Vad görs denna milstolpe
 
--   Initiera ett nytt React projekt med **npm create vite**
--   Router Config
--   Material UI Config
--   Skapa ett nytt Spotify projekt
--   Länka spotify credentials
--   Images assets
+- Initiera ett nytt React projekt med **npm create vite**
+- Router Config
+- Material UI Config
+- Skapa ett nytt Spotify projekt
+- Länka spotify credentials
+- Images assets
 
 ## Övergripande
 
@@ -33,17 +33,17 @@ För att starta en projektet, är det ett par grejer du måste göra.
 
 Applikationen använder följande Node module paket
 
--   Material UI
--   React Router V6
--   Spotify-web-api-node
--   Spotify SDK
+- Material UI
+- React Router V6
+- Spotify-web-api-node
+- Spotify SDK
 
 ### Dokumentation:
 
--   [Spotify web playback sdk](https://developer.spotify.com/documentation/web-playback-sdk/reference/)
--   [Spotify web api](https://developer.spotify.com/documentation/web-api/reference/#/)
--   [Material UI](https://mui.com/material-ui/getting-started/overview/)
--   [React](https://beta.reactjs.org/)
--   [React router](https://reactrouter.com/en/main)
+- [Spotify web playback sdk](https://developer.spotify.com/documentation/web-playback-sdk/reference/)
+- [Spotify web api](https://developer.spotify.com/documentation/web-api/reference/#/)
+- [Material UI](https://mui.com/material-ui/getting-started/overview/)
+- [React](https://beta.reactjs.org/)
+- [React router](https://reactrouter.com/en/main)
 
 OBS! På grund utav begränsningar från Spotify sida kommer inte andra människor använda din hemsida när den är deployad, om du inte har whitelistat deras emails i dashboarden vilket du kan göra under **Users and access** tabben.
