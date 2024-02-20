@@ -3,7 +3,16 @@ import { accessURL } from '../config/config';
 
 const Login = () => {
   return (
-    <Box>
+    <Box
+      sx={{
+        backgroundColor: 'background.paper',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
+      }}
+    >
       <img src="/Spotify_Logo.png" alt="Spotify Logo" style={{ marginBottom: 300, width: '70%', maxWidth: 500 }} />
       <Button color="primary" size="large" variant="contained" href={accessURL}>
         Login to Spotify
