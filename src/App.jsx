@@ -1,5 +1,5 @@
 import './App.css';
-import { Stack, Button, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import Login from './pages/Login';
 
 function App({ spotifyApi }) {
