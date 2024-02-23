@@ -1,9 +1,10 @@
 import { Box } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import './NavItem.css';
 
 const NavItem = ({ name, Icon, target }) => {
   return (
-    <NavLink to={target} style={{ textDecoration: 'none' }}>
+    <NavLink className="NavLink" to={target} style={{ textDecoration: 'none' }}>
       <Box
         px={3}
         py={1}
