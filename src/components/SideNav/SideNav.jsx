@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Box, Divider } from '@mui/material';
 import NavItem from '../NavItem/NavItem';
 import HomeIcon from '@mui/icons-material/Home';
+import NavPlaylist from '../NavPlaylist/NavPlaylist';
 
 const SideNav = ({ spotifyApi, token }) => {
   useEffect(() => {
@@ -38,8 +39,7 @@ const SideNav = ({ spotifyApi, token }) => {
           flex: 1
         }}
       >
-        {/* Playlists */}
-        <NavItem name="DnB" Icon={null} target="/" />
+        <NavPlaylist name="DnB" id={1337} loading={false} />
       </Box>
     </Box>
   );
