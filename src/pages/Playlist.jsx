@@ -1,6 +1,11 @@
 import { Box, Avatar, Typography } from '@mui/material';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Playlist = ({ spotifyApi, token }) => {
+  const [playlistInfo, setPlaylistInfo] = useState(null);
+  const { id } = useParams();
+
   return (
     <Box id="Playlist__page" sx={{ bgcolor: 'background.paper', flex: 1, overflowY: 'auto' }}>
       <Box
@@ -17,15 +22,15 @@ const Playlist = ({ spotifyApi, token }) => {
         }}
       >
         <Avatar
-          src={null}
-          alt={null}
+          src={playlistInfo?.image}
+          alt={playlistInfo?.name}
           variant="square"
           sx={{ boxShadow: 15, width: { xs: '100%', md: 235 }, height: { xs: '100%', md: 235 } }}
         />
         <Box>
           <Typography sx={{ fontSize: 12, fontWeight: 'bold', color: 'text.primary' }}>Playlist</Typography>
           <Typography sx={{ fontSize: { xs: 42, md: 72 }, fontWeight: 'bold', color: 'text.primary' }}>
-            PlaylistName
+            {playlistInfo?.name}
           </Typography>
         </Box>
       </Box>
