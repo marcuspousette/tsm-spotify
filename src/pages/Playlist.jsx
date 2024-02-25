@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 
 const Playlist = ({ spotifyApi, token }) => {
   const [playlistInfo, setPlaylistInfo] = useState(null);
+  const [songs, setSongs] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -16,7 +17,10 @@ const Playlist = ({ spotifyApi, token }) => {
             ? playlistDetails.body.images[1].url
             : playlistDetails.body.images[0].url
         });
-        console.log(playlistDetails);
+        const { items } = playlistDetails.body.tracks;
+        // Format songs
+        setSongs(items);
+        console.log(items);
       } catch (error) {
         console.error(error);
       }
