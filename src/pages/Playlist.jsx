@@ -10,6 +10,12 @@ const Playlist = ({ spotifyApi, token }) => {
     const getData = async () => {
       try {
         const playlistDetails = await spotifyApi.getPlaylist(id);
+        setPlaylistInfo({
+          name: playlistDetails.body.name,
+          image: playlistDetails.body.images[1]?.url
+            ? playlistDetails.body.images[1].url
+            : playlistDetails.body.images[0].url
+        });
         console.log(playlistDetails);
       } catch (error) {
         console.error(error);
