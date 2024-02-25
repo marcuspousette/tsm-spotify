@@ -1,10 +1,23 @@
 import { Box, Avatar, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Playlist = ({ spotifyApi, token }) => {
   const [playlistInfo, setPlaylistInfo] = useState(null);
   const { id } = useParams();
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const playlistDetails = await spotifyApi.getPlaylist(id);
+        console.log(playlistDetails);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getData();
+  }, [id]);
 
   return (
     <Box id="Playlist__page" sx={{ bgcolor: 'background.paper', flex: 1, overflowY: 'auto' }}>
