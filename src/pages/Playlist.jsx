@@ -7,6 +7,14 @@ const Playlist = ({ spotifyApi, token }) => {
   const [songs, setSongs] = useState([]);
   const { id } = useParams();
 
+  const formatSongs = (items) =>
+    items.map((item, index) => {
+      const { track } = item;
+      track.contextUri = `spotify:playlist:${id}`;
+      track.position = index;
+      return track;
+    });
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -18,9 +26,8 @@ const Playlist = ({ spotifyApi, token }) => {
             : playlistDetails.body.images[0].url
         });
         const { items } = playlistDetails.body.tracks;
-        // Format songs
-        setSongs(items);
-        console.log(items);
+        const formattedSongs = formatSongs(items);
+        setSongs(formattedSongs);
       } catch (error) {
         console.error(error);
       }
