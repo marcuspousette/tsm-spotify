@@ -81,7 +81,7 @@ const Playlist = ({ spotifyApi, token }) => {
           )}
         </Box>
       </Box>
-      <SongTable />
+      <SongTable songs={songs} loading={status.isLoading} spotifyApi={spotifyApi} />
     </Box>
   );
 };
