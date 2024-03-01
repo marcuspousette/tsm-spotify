@@ -2,7 +2,7 @@ import { Box, Divider, Grid } from '@mui/material';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SongRow from '../SongRow/SongRow';
 
-const SongTable = ({}) => {
+const SongTable = ({ songs, loading, spotifyApi }) => {
   return (
     <Box
       p={{ xs: 3, md: 4 }}
@@ -30,9 +30,33 @@ const SongTable = ({}) => {
       <Box pb={2}>
         <Divider sx={{ width: '100%', height: 1 }} />
       </Box>
-      <SongRow />
-      <SongRow />
-      <SongRow />
+      <SongRow
+        loading={false}
+        index={0 + 0}
+        images={null}
+        title={'l33t'}
+        artist={'l33t'}
+        album={'l33t'}
+        duration="13:37"
+      />
+      <SongRow
+        loading={loading}
+        index={0 + 1}
+        images={null}
+        title={'l33t'}
+        artist={'l33t'}
+        album={'l33t'}
+        duration="13:37"
+      />
+      <SongRow
+        loading={true}
+        index={0 + 2}
+        images={null}
+        title={'l33t'}
+        artist={'l33t'}
+        album={'l33t'}
+        duration="13:37"
+      />
     </Box>
   );
 };
