@@ -1,4 +1,4 @@
-import { Avatar, Box, Grid, Typography } from '@mui/material';
+import { Avatar, Box, Grid, Skeleton, Typography } from '@mui/material';
 
 const SongRow = ({ loading, index, images, title, artist, album, duration }) => {
   const image = images?.length > 0 ? images[0].url : null;
@@ -20,17 +20,25 @@ const SongRow = ({ loading, index, images, title, artist, album, duration }) => 
         <Typography>{index + 1}</Typography>
       </Grid>
       <Grid item sx={{ flex: 1, display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Avatar src={image} alt={null} variant="square" />
+        {loading ? (
+          <Skeleton variant="rectangular" width={40} height={40} />
+        ) : (
+          <Avatar src={image} alt={null} variant="square" />
+        )}
         <Box>
-          <Typography sx={{ fontSize: 16, color: 'text.primary' }}>{title}</Typography>
-          <Typography sx={{ fontSize: 12, color: 'text.secondary' }}>{artist}</Typography>
+          <Typography sx={{ fontSize: 16, color: 'text.primary' }}>
+            {loading ? <Skeleton variant="text" width={130} height={24} /> : title}
+          </Typography>
+          <Typography sx={{ fontSize: 12, color: 'text.secondary' }}>
+            {loading ? <Skeleton variant="text" width={65} height={18} /> : artist}
+          </Typography>
         </Box>
       </Grid>
       <Grid item xs={3} sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
-        {album}
+        {loading ? <Skeleton variant="text" width={65} height={24} /> : album}
       </Grid>
       <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-        {duration}
+        {loading ? <Skeleton variant="text" width={65} height={24} /> : duration}
       </Grid>
     </Grid>
   );
