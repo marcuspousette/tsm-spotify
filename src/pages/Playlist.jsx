@@ -1,6 +1,7 @@
 import { Box, Avatar, Typography, Skeleton } from '@mui/material';
 import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import SongTable from '../components/SongTable/SongTable';
 
 const Playlist = ({ spotifyApi, token }) => {
   const [playlistInfo, setPlaylistInfo] = useState(null);
@@ -80,6 +81,7 @@ const Playlist = ({ spotifyApi, token }) => {
           )}
         </Box>
       </Box>
+      <SongTable />
     </Box>
   );
 };
