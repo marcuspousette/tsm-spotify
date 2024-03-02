@@ -3,6 +3,27 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SongRow from '../SongRow/SongRow';
 
 const SongTable = ({ songs, loading, spotifyApi }) => {
+  const renderSongs = () => {
+    if (loading) {
+      return Array.from({ length: Math.max(songs.length, 5) }, (_, index) => (
+        <SongRow loading={loading} index={index} images={null} key={index} />
+      ));
+    }
+
+    return songs.map((song, index) => (
+      <SongRow
+        loading={loading}
+        index={index}
+        images={song.album.images}
+        title={song.name}
+        artist={song.artists.length > 1 ? song.artists.map((artist) => artist.name).join(', ') : song.artists[0].name}
+        album={song.album.name}
+        duration={song.duration_ms / 1000}
+        key={index}
+      />
+    ));
+  };
+
   return (
     <Box
       p={{ xs: 3, md: 4 }}
@@ -30,33 +51,7 @@ const SongTable = ({ songs, loading, spotifyApi }) => {
       <Box pb={2}>
         <Divider sx={{ width: '100%', height: 1 }} />
       </Box>
-      <SongRow
-        loading={false}
-        index={0 + 0}
-        images={null}
-        title={'l33t'}
-        artist={'l33t'}
-        album={'l33t'}
-        duration="13:37"
-      />
-      <SongRow
-        loading={loading}
-        index={0 + 1}
-        images={null}
-        title={'l33t'}
-        artist={'l33t'}
-        album={'l33t'}
-        duration="13:37"
-      />
-      <SongRow
-        loading={true}
-        index={0 + 2}
-        images={null}
-        title={'l33t'}
-        artist={'l33t'}
-        album={'l33t'}
-        duration="13:37"
-      />
+      {renderSongs()}
     </Box>
   );
 };
