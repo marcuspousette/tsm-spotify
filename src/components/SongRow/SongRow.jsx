@@ -5,7 +5,16 @@ const SongRow = ({ loading, index, images, title, artist, album, duration, conte
   const image = images?.length > 0 ? images[0].url : null;
 
   const onHandleRowClick = async () => {
-    const song = { context_uri: contextUri, offset: { position: position }, position_ms: 0 };
+    const song = {
+      context_uri: contextUri,
+      offset: { position: position },
+      position_ms: 0,
+      title,
+      image: image ? image : {},
+      artist,
+      duration,
+      position
+    };
     await spotifyApi.play(song);
   };
 
