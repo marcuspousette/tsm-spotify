@@ -10,18 +10,24 @@ const SongTable = ({ songs, loading, spotifyApi }) => {
       ));
     }
 
-    return songs.map((song, index) => (
-      <SongRow
-        loading={loading}
-        index={index}
-        images={song.album.images}
-        title={song.name}
-        artist={song.artists.length > 1 ? song.artists.map((artist) => artist.name).join(', ') : song.artists[0].name}
-        album={song.album.name}
-        duration={song.duration_ms / 1000}
-        key={index}
-      />
-    ));
+    return songs.map((song, index) => {
+      // console.log(song);
+      return (
+        <SongRow
+          loading={loading}
+          index={index}
+          images={song.album.images}
+          title={song.name}
+          artist={song.artists.length > 1 ? song.artists.map((artist) => artist.name).join(', ') : song.artists[0].name}
+          album={song.album.name}
+          duration={song.duration_ms / 1000}
+          key={index}
+          contextUri={song.contextUri}
+          position={song.position}
+          spotifyApi={spotifyApi}
+        />
+      );
+    });
   };
 
   return (

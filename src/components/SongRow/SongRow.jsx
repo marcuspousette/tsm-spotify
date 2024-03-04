@@ -1,12 +1,18 @@
 import { Avatar, Box, Grid, Skeleton, Typography } from '@mui/material';
 import { formatTime } from '../../utils/formatTime';
 
-const SongRow = ({ loading, index, images, title, artist, album, duration }) => {
+const SongRow = ({ loading, index, images, title, artist, album, duration, contextUri, position, spotifyApi }) => {
   const image = images?.length > 0 ? images[0].url : null;
+
+  const onHandleRowClick = async () => {
+    const song = { context_uri: contextUri, offset: { position: position }, position_ms: 0 };
+    await spotifyApi.play(song);
+  };
 
   return (
     <Grid
       container
+      onClick={onHandleRowClick}
       px={2}
       py={1}
       sx={{
