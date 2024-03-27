@@ -86,10 +86,19 @@ const Player = ({ spotifyApi, token }) => {
         }}
       >
         <Grid item xs={12} md={4} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
-          <Avatar src={null} alt={null} variant="square" sx={{ width: 56, height: 56, marginRight: 2 }} />
+          <Avatar
+            src={currentTrack?.album.images[0].url}
+            alt={currentTrack?.album.name}
+            variant="square"
+            sx={{ width: 56, height: 56, marginRight: 2 }}
+          />
           <Box>
-            <Typography sx={{ color: 'text.primary', fontSize: 14 }}>Title</Typography>
-            <Typography sx={{ color: 'text.secondary', fontSize: 12 }}>Artist</Typography>
+            <Typography sx={{ color: 'text.primary', fontSize: 14 }}>{currentTrack?.name}</Typography>
+            <Typography sx={{ color: 'text.secondary', fontSize: 12 }}>
+              {currentTrack?.artists.length > 1
+                ? currentTrack.artists.map((artist) => artist.name).join(', ')
+                : currentTrack?.artists[0].name}
+            </Typography>
           </Box>
         </Grid>
         <Grid
