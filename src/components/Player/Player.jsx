@@ -56,6 +56,22 @@ const Player = ({ spotifyApi, token }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!localPlayer) {
+      return;
+    }
+
+    async function connect() {
+      await localPlayer.connect();
+    }
+
+    connect();
+
+    return () => {
+      localPlayer.disconnect();
+    };
+  }, [localPlayer]);
+
   return (
     <Box>
       <Grid
