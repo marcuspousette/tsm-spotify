@@ -37,11 +37,11 @@ const Player = ({ spotifyApi, token }) => {
 
       player.addListener('player_state_changed', (state) => {
         if (!state || !state.track_window?.current_track) {
-          console.log('disconnected?');
+          // console.log('disconnected');
           return;
         }
 
-        console.log(state);
+        // console.log(state);
 
         const duration = state.track_window.current_track.duration_ms / 1000;
         const progress = state.position / 1000;
@@ -71,6 +71,17 @@ const Player = ({ spotifyApi, token }) => {
       localPlayer.disconnect();
     };
   }, [localPlayer]);
+
+  useEffect(() => {
+    const transferPlayback = async () => {
+      if (device) {
+        const res = await spotifyApi.getMyDevices();
+        console.log(res);
+        await spotifyApi.transferMyPlayback([device], false);
+      }
+    };
+    transferPlayback();
+  }, [device, spotifyApi]);
 
   return (
     <Box>
