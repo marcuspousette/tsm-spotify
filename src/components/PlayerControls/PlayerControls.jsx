@@ -19,7 +19,11 @@ const PlayerControls = ({ player, isPaused, duration, progress }) => {
           <SkipNext sx={skipStyle} />
         </IconButton>
       </Stack>
-      <Stack>Progress/Slider</Stack>
+      <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" sx={{ width: '75%' }}>
+        <Typography sx={{ color: 'text.secondary', fontSize: 12 }}>{formatTime(progress)}</Typography>
+        <Slider size="medium" value={progress} min={0} max={duration} />
+        <Typography sx={{ color: 'text.secondary', fontSize: 12 }}>{formatTime(duration)}</Typography>
+      </Stack>
     </Stack>
   );
 };
