@@ -42,7 +42,20 @@ const PlayerControls = ({ player, isPaused, duration, progress }) => {
       </Stack>
       <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" sx={{ width: '75%' }}>
         <Typography sx={{ color: 'text.secondary', fontSize: 12 }}>{formatTime(currentProgress)}</Typography>
-        <Slider size="medium" value={currentProgress} min={0} max={duration} />
+        <Slider
+          size="medium"
+          value={currentProgress}
+          min={0}
+          max={duration}
+          onChange={(event, value) => {
+            console.log('Changed', value);
+            setCurrentProgress(value);
+          }}
+          onChangeCommitted={(event, value) => {
+            console.log('Commited', value);
+            player.seek(value * 1000);
+          }}
+        />
         <Typography sx={{ color: 'text.secondary', fontSize: 12 }}>{formatTime(duration)}</Typography>
       </Stack>
     </Stack>
