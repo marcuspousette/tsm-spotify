@@ -1,12 +1,26 @@
 import { Box, IconButton, Slider, Stack, Typography } from '@mui/material';
 import { formatTime } from '../../utils/formatTime';
 import { Pause, PlayArrow, SkipNext, SkipPrevious } from '@mui/icons-material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const PlayerControls = ({ player, isPaused, duration, progress }) => {
   const [currentProgress, setCurrentProgress] = useState(progress);
   const skipStyle = { width: 28, height: 28 };
   const playStyle = { width: 38, height: 38 };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (!isPaused && player) {
+        setCurrentProgress((prevState) => prevState + 1);
+      }
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, [isPaused, player]);
+
+  useEffect(() => {
+    setCurrentProgress(progress);
+  }, [progress]);
+
   return (
     <Stack direction="column" spacing={2} justifyContent="center" alignItems="center" sx={{ width: '100%' }}>
       <Stack direction="row" spacing={1} justifyContent="center" alignItems="center" sx={{ width: '100%' }}>
