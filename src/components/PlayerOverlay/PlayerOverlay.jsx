@@ -1,6 +1,7 @@
-import { Box, Button, Container, Grid, IconButton } from '@mui/material';
+import { Box, Button, Container, Grid, IconButton, Typography } from '@mui/material';
 // import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { KeyboardArrowDown } from '@mui/icons-material';
+import PlayerControls from '../PlayerControls/PlayerControls';
 
 const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay }) => {
   return (
@@ -25,6 +26,18 @@ const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay }) => {
               {/* <KeyboardArrowDownIcon fontSize="large" sx={{ color: 'text.primary' }} /> */}
               <KeyboardArrowDown fontSize="large" sx={{ color: 'text.primary' }} />
             </IconButton>
+          </Grid>
+          <Grid
+            item
+            xs={5}
+            sx={{ backgroundImage: null, backgroundPosition: 'center', backgroundSize: 'cover' }}
+          ></Grid>
+          <Grid item xs={1}>
+            <Typography sx={{ color: 'text.primary', fontSize: '28px' }}>SongName</Typography>
+            <Typography sx={{ color: 'text.secondary', fontSize: '18px' }}>SongArtist</Typography>
+          </Grid>
+          <Grid item xs={2}>
+            {/* <PlayerControls player isPaused duration progress /> */}
           </Grid>
         </Grid>
       </Container>
