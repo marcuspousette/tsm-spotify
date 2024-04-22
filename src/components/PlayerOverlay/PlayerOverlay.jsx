@@ -3,7 +3,7 @@ import { Box, Button, Container, Grid, IconButton, Typography } from '@mui/mater
 import { KeyboardArrowDown } from '@mui/icons-material';
 import PlayerControls from '../PlayerControls/PlayerControls';
 
-const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay }) => {
+const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay, player, isPaused, duration, progress, currentTrack }) => {
   return (
     <Box
       id="PlayerOverlay"
@@ -30,14 +30,22 @@ const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay }) => {
           <Grid
             item
             xs={5}
-            sx={{ backgroundImage: null, backgroundPosition: 'center', backgroundSize: 'cover' }}
+            sx={{
+              backgroundImage: `url("${currentTrack?.album.images[0].url}")`,
+              backgroundPosition: 'center',
+              backgroundSize: 'cover'
+            }}
           ></Grid>
           <Grid item xs={1}>
-            <Typography sx={{ color: 'text.primary', fontSize: '28px' }}>SongName</Typography>
-            <Typography sx={{ color: 'text.secondary', fontSize: '18px' }}>SongArtist</Typography>
+            <Typography sx={{ color: 'text.primary', fontSize: '28px' }}>{currentTrack?.name}</Typography>
+            <Typography sx={{ color: 'text.secondary', fontSize: '18px' }}>
+              {currentTrack?.artists.length > 1
+                ? currentTrack.artists.map((artist) => artist.name).join(', ')
+                : currentTrack?.artists[0].name}
+            </Typography>
           </Grid>
           <Grid item xs={2}>
-            {/* <PlayerControls player isPaused duration progress /> */}
+            <PlayerControls player={player} isPaused={isPaused} duration={duration} progress={progress} />
           </Grid>
         </Grid>
       </Container>
