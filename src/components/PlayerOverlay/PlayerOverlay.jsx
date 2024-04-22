@@ -1,6 +1,8 @@
-import { Box } from '@mui/material';
+import { Box, Button, Container, Grid, IconButton } from '@mui/material';
+// import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { KeyboardArrowDown } from '@mui/icons-material';
 
-const PlayerOverlay = ({ playerOverlayIsOpen }) => {
+const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay }) => {
   return (
     <Box
       id="PlayerOverlay"
@@ -16,7 +18,16 @@ const PlayerOverlay = ({ playerOverlayIsOpen }) => {
         transform: playerOverlayIsOpen ? 'translateY(0px)' : 'translateY(100vh)'
       }}
     >
-      PlayerOverlay
+      <Container sx={{ height: '100%', background: 'linear-gradient(0deg, #121212 0%, #39D47250 100%);' }}>
+        <Grid container direction="column" justifyContent="space-between" sx={{ height: '100%' }}>
+          <Grid item xs={1} sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+            <IconButton onClick={closeOverlay} sx={{ paddingLeft: 0 }}>
+              {/* <KeyboardArrowDownIcon fontSize="large" sx={{ color: 'text.primary' }} /> */}
+              <KeyboardArrowDown fontSize="large" sx={{ color: 'text.primary' }} />
+            </IconButton>
+          </Grid>
+        </Grid>
+      </Container>
     </Box>
   );
 };

@@ -141,7 +141,7 @@ const Player = ({ spotifyApi, token }) => {
           <PlayerVolume player={localPlayer} />
         </Grid>
       </Grid>
-      <PlayerOverlay playerOverlayIsOpen={playerOverlayIsOpen} />
+      <PlayerOverlay playerOverlayIsOpen={playerOverlayIsOpen} closeOverlay={() => setPlayerOverlayIsOpen(false)} />
     </Box>
   );
 };
