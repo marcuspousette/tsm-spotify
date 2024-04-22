@@ -2,6 +2,7 @@ import { Avatar, Box, Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import PlayerControls from '../PlayerControls/PlayerControls';
 import PlayerVolume from '../PlayerVolume/PlayerVolume';
+import PlayerOverlay from '../PlayerOverlay/PlayerOverlay';
 
 const Player = ({ spotifyApi, token }) => {
   const [localPlayer, setLocalPlayer] = useState(null);
@@ -11,6 +12,7 @@ const Player = ({ spotifyApi, token }) => {
   const [duration, setDuration] = useState(null);
   const [progress, setProgress] = useState(null);
   const [active, setActive] = useState(false);
+  const [playerOverlayIsOpen, setPlayerOverlayIsOpen] = useState(false);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -94,6 +96,7 @@ const Player = ({ spotifyApi, token }) => {
     <Box>
       <Grid
         container
+        onClick={() => setPlayerOverlayIsOpen((prevState) => !prevState)}
         px={3}
         sx={{
           backgroundColor: 'background.paper',
@@ -138,6 +141,7 @@ const Player = ({ spotifyApi, token }) => {
           <PlayerVolume player={localPlayer} />
         </Grid>
       </Grid>
+      <PlayerOverlay playerOverlayIsOpen={playerOverlayIsOpen} />
     </Box>
   );
 };
