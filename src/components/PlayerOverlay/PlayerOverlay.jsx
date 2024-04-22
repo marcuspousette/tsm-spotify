@@ -3,7 +3,16 @@ import { Box, Button, Container, Grid, IconButton, Typography } from '@mui/mater
 import { KeyboardArrowDown } from '@mui/icons-material';
 import PlayerControls from '../PlayerControls/PlayerControls';
 
-const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay, player, isPaused, duration, progress, currentTrack }) => {
+const PlayerOverlay = ({
+  playerOverlayIsOpen,
+  closeOverlay,
+  player,
+  isPaused,
+  duration,
+  progress,
+  currentTrack,
+  active
+}) => {
   return (
     <Box
       id="PlayerOverlay"
@@ -45,7 +54,11 @@ const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay, player, isPaused, du
             </Typography>
           </Grid>
           <Grid item xs={2}>
-            <PlayerControls player={player} isPaused={isPaused} duration={duration} progress={progress} />
+            {active ? (
+              <PlayerControls player={player} isPaused={isPaused} duration={duration} progress={progress} />
+            ) : (
+              <Box>Please transfer Playback</Box>
+            )}
           </Grid>
         </Grid>
       </Container>
