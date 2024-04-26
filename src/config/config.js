@@ -3,7 +3,7 @@ export const clientId = import.meta.env.VITE_CLIENT_ID;
 export const liveURL = import.meta.env.VITE_LIVE_URL;
 export const devURL = 'http://localhost:5173/';
 export const redirectURL = import.meta.env.PROD
-  ? 'https://spotify-clone-jc3tjmgzt-belden1s-projects.vercel.app/'
+  ? 'https://spotify-clone-snowy-16-testbranch.vercel.app/'
   : devURL;
 export const scopes = [
   'playlist-read-collaborative',
