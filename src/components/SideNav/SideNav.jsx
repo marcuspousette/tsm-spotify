@@ -11,12 +11,12 @@ const SideNav = ({ spotifyApi, token }) => {
   useEffect(() => {
     async function getPlaylists() {
       if (!spotifyApi) return;
-
+      console.log(spotifyApi);
       const data = await spotifyApi.getUserPlaylists();
       setPlaylists(data.body.items);
       setLoading(false);
+      console.log('Data body items: ', data.body.items);
     }
-
     getPlaylists();
   }, [spotifyApi, token]);
 
@@ -27,9 +27,10 @@ const SideNav = ({ spotifyApi, token }) => {
       ));
     }
 
-    return playlists.map((playlist, index) => (
-      <NavPlaylist name={playlist.name} id={playlist.id} loading={loading} key={index} />
-    ));
+    return playlists.map((playlist, index) => {
+      console.log(index, playlist.name, playlist.id);
+      return <NavPlaylist name={playlist.name} id={playlist.id} loading={loading} key={index} />;
+    });
   };
 
   return (
